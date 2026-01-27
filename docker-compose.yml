@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  auto-backend:
+    build: ./backend
+    container_name: auto-backend
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+
+  auto-frontend:
+    build: ./frontend
+    container_name: auto-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - auto-backend
