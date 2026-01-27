@@ -11,16 +11,20 @@ async function askAI() {
     box.innerText = "Thinking…";
 
     try {
-        const res = await fetch("/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query: q })
-        });
+        const res = await fetch(
+            "http://backend-service.auto-chatbot.svc.cluster.local:8000/chat",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: q })
+            }
+        );
 
         const data = await res.json();
         box.innerText = data.answer || "No answer.";
 
     } catch (e) {
+        console.error(e);
         box.innerText = "Error connecting to backend.";
     }
 }
