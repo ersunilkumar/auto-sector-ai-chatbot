@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: auto-chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: auto-sector-backend:v1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: SERPAPI_KEY
+          value: c9508ef6dbde4e6a8ac8553375fbd746e2697962f996d7a5b409c48d2e0ea569
