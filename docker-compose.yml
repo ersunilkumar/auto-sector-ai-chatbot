@@ -13,6 +13,6 @@ services:
     build: ./frontend
     container_name: auto-frontend
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - auto-backend
